@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class与Style绑定</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<section id="app">
+    <div class="static" v-bind:class="classObj"></div>
+</section>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            error: null
+        },
+        methods: {},
+        computed: {
+            classObj: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
